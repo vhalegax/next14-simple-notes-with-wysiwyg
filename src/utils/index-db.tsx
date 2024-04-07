@@ -2,12 +2,21 @@ import { NoteType } from "@/types/NoteType"
 
 import { generateUUID } from "./uuid"
 
-const DATABASE_NAME = "simple_notes"
+const DATABASE_NAME = "notes_database"
 
-export function saveToIndexedDB(
-  content: string,
-  title?: string,
-): Promise<void> {
+interface SaveNoteProps {
+  content: string
+  title?: string
+}
+
+interface UpdateNoteProps extends SaveNoteProps {
+  id: string
+}
+
+export function saveToIndexedDB({
+  content,
+  title,
+}: SaveNoteProps): Promise<void> {
   return new Promise((resolve, reject) => {
     const note = {
       id: generateUUID(),
@@ -126,11 +135,11 @@ export function readNotesFromIndexedDB(): Promise<NoteType[]> {
   })
 }
 
-export function updateNoteInIndexedDB(
-  id: string,
-  content: string,
-  title?: string,
-): Promise<void> {
+export function updateNoteInIndexedDB({
+  id,
+  content,
+  title,
+}: UpdateNoteProps): Promise<void> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DATABASE_NAME, 1)
 

@@ -1,19 +1,13 @@
 "use client"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { X } from "lucide-react"
-import ReactQuill from "react-quill"
+import dynamic from "next/dynamic"
 import "react-quill/dist/quill.snow.css"
 
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -28,6 +22,10 @@ interface Props {
 }
 
 export function NotesEditor({ open, note, handleEditor }: Props) {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    [],
+  )
   const [title, setTitle] = useState(note?.title || "")
   const [content, setContent] = useState(note?.content || "")
 

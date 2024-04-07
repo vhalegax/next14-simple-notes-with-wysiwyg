@@ -3,12 +3,12 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
 
+import { Button } from "@/components/ui/button"
 import { NotesCard } from "@/components/notes/card"
 import { NotesEditor } from "@/components/notes/editor"
 
 import { NoteType } from "@/types/NoteType"
 import { readNotesFromIndexedDB } from "@/utils/index-db"
-import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const [openEditor, setOpenEditor] = useState(false)

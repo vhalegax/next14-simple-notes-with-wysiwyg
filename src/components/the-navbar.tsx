@@ -8,8 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -19,7 +17,7 @@ export function TheNavbar() {
   return (
     <>
       <header className="fixed top-0 z-[40] flex h-[60px] w-screen items-center border-b bg-card">
-        <div className="relative flex w-full justify-between px-4 sm:px-10 items-center">
+        <div className="relative flex w-full items-center justify-between px-4 sm:px-10">
           <div>
             <h1 className="font-bold">Simple Notes</h1>
           </div>
