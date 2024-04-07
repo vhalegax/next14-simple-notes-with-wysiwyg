@@ -1,13 +1,66 @@
+"use client"
+
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
 import { NotesCard } from "@/components/notes/card"
+import { NotesEditor } from "@/components/notes/editor"
+
+import { NoteType } from "@/types/NoteType"
+import { readNotesFromIndexedDB } from "@/utils/index-db"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
+  const [openEditor, setOpenEditor] = useState(false)
+  const [activeNote, setActiveNote] = useState<NoteType | undefined>(undefined)
+  const [notes, setNotes] = useState<NoteType[]>([])
+
+  const handleEditor = (value: boolean, note?: NoteType) => {
+    if (note) setActiveNote(note)
+    setOpenEditor(value)
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await readNotesFromIndexedDB()
+        setNotes(data)
+      } catch (e) {}
+    }
+
+    fetchData()
+  }, [openEditor])
+
   return (
-    <div className="grid grid-cols-5 gap-5">
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((value) => {
-        return <NotesCard key={value} />
-      })}
-    </div>
+    <>
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+        {notes
+          .sort((noteA, noteB) => noteB.createdAt - noteA.createdAt)
+          .map((note) => {
+            return (
+              <NotesCard
+                key={note.id}
+                note={note}
+                handleEditor={handleEditor}
+              />
+            )
+          })}
+      </div>
+
+      {openEditor ? (
+        <NotesEditor
+          open={openEditor}
+          note={activeNote}
+          handleEditor={handleEditor}
+        />
+      ) : null}
+
+      <Button
+        className="fixed bottom-10 right-10"
+        onClick={() => handleEditor(true)}
+      >
+        Add Notes
+      </Button>
+    </>
   )
 }
