@@ -8,6 +8,7 @@ import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogOverlay,
 } from "@/components/ui/alert-dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -62,9 +63,14 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
         if (!open) handleEditor(false)
       }}
     >
+      <AlertDialogOverlay
+        className="!z-[51] bg-transparent"
+        onClick={() => handleSave()}
+      />
+      
       <AlertDialogContent
-        className={`h-[calc(100dvh-100px)] w-[1050px] max-w-[calc(100dvw-20px)]
-       gap-y-4 overflow-hidden rounded p-4 text-lg`}
+        className={`z-[52] h-[calc(100dvh-100px)] w-[1050px]
+       max-w-[calc(100dvw-20px)] gap-y-4 overflow-hidden rounded p-4 text-lg`}
       >
         {/* Header */}
         <div className="flex h-14 items-center justify-between space-x-4">
@@ -85,7 +91,7 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
         </div>
         {/* End Header */}
 
-        <div className="bg-card h-[calc(100dvh-100px-90px-90px)] max-h-[calc(100dvh-100px-90px-90px)] overflow-y-auto">
+        <div className="h-[calc(100dvh-100px-90px-90px)] max-h-[calc(100dvh-100px-90px-90px)] overflow-y-auto bg-card">
           <ReactQuill
             className="h-[calc(100%-74px)] sm:h-[calc(100%-46px)]"
             theme="snow"
@@ -97,8 +103,7 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
 
         {/* Footer */}
         <div className="!flex h-14 items-center justify-end gap-x-4">
-          <AlertDialogCancel className="mt-0">Cancel</AlertDialogCancel>
-          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={handleSave}>Close</Button>
         </div>
         {/* End Footer */}
       </AlertDialogContent>
