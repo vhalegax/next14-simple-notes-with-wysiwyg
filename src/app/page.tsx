@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { NotesCard } from "@/components/notes-card"
+import { NotesCard } from "@/components/notes/card"
 
 export default function Home() {
   return (

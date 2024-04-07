@@ -43,7 +43,6 @@ export function NotesCard() {
       onClick={() => alert("alex")}
     >
       <CardContent className="p-5">
-        <h3 className="font-medium">{exampleNote.title}</h3>
         <Separator className="my-3 border-b border-primary"/>
         <div className="max-h-36 overflow-hidden text-sm">
           {parse(exampleNote.content)}
