@@ -16,7 +16,7 @@ export default function Home() {
   const [notes, setNotes] = useState<NoteType[]>([])
 
   const handleEditor = (value: boolean, note?: NoteType) => {
-    if (note) setActiveNote(note)
+    setActiveNote(note || undefined)
     setOpenEditor(value)
   }
 

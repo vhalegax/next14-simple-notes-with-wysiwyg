@@ -31,9 +31,9 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
 
   const handleSave = async () => {
     if (note?.id) {
-      await updateNoteInIndexedDB(note!.id, content, title)
+      await updateNoteInIndexedDB({ id: note!.id, content, title })
     } else {
-      await saveToIndexedDB(content, title)
+      await saveToIndexedDB({ content, title })
     }
     handleEditor(false)
   }
