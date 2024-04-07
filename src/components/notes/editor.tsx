@@ -73,19 +73,19 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
               type="text"
               value={title}
               placeholder="Your Note Title"
-              className="border border-primary"
+              className="bg-card"
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div>
-            <AlertDialogCancel className="mt-0 border border-primary">
+            <AlertDialogCancel className="mt-0">
               <X className="h-4 w-4" />
             </AlertDialogCancel>
           </div>
         </div>
         {/* End Header */}
 
-        <div className="h-[calc(100dvh-100px-90px-90px)] max-h-[calc(100dvh-100px-90px-90px)] overflow-y-auto border border-primary">
+        <div className="bg-card h-[calc(100dvh-100px-90px-90px)] max-h-[calc(100dvh-100px-90px-90px)] overflow-y-auto">
           <ReactQuill
             className="h-[calc(100%-74px)] sm:h-[calc(100%-46px)]"
             theme="snow"
