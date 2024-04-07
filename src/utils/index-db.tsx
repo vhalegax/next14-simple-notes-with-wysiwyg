@@ -157,7 +157,7 @@ export function updateNoteInIndexedDB({
 
         if (note) {
           note.content = content
-          note.title = title || note.title
+          note.title = title
           note.updatedAt = new Date().getTime()
 
           const updateRequest = objectStore.put(note)

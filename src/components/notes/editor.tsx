@@ -50,7 +50,7 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
   const handleSave = async () => {
     if (note?.id) {
       await updateNoteInIndexedDB({ id: note!.id, content, title })
-    } else {
+    } else if (content || title) {
       await saveToIndexedDB({ content, title })
     }
     handleEditor(false)
@@ -67,7 +67,7 @@ export function NotesEditor({ open, note, handleEditor }: Props) {
         className="!z-[51] bg-transparent"
         onClick={() => handleSave()}
       />
-      
+
       <AlertDialogContent
         className={`z-[52] h-[calc(100dvh-100px)] w-[1050px]
        max-w-[calc(100dvw-20px)] gap-y-4 overflow-hidden rounded p-4 text-lg`}
