@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import parse from "html-react-parser"
 
@@ -12,20 +14,14 @@ import {
 
 import { NoteType } from "@/types/NoteType"
 import { generateUUID } from "@/utils/uuid"
+import { Separator } from "@/components/ui/separator"
 
 const exampleNote: NoteType = {
   id: generateUUID(),
-  title: "Sample Note with Rich Content",
+  title: "Sample Note with Rich Content Loream Loream",
   content: `
     <h1>This is a Sample Note</h1>
     <ul>
-      <li><p>Dot List:</p>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-        </ul>
-      </li>
       <li><strong>Bold Text:</strong> Use the strong tag to make text bold.</li>
       <li><em>Italic Text:</em> Use the em tag to make text italic.</li>
       <li><u>Underlined Text:</u> Use the u tag to underline text.</li>
@@ -42,12 +38,14 @@ const exampleNote: NoteType = {
 
 export function NotesCard() {
   return (
-    <Card className="hover:cursor-pointer hover:bg-muted w-[350px]">
-      <CardHeader>
-        <CardTitle>{exampleNote.title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="text-sm">
+    <Card
+      className="w-[350px] hover:cursor-pointer hover:bg-muted"
+      onClick={() => alert("alex")}
+    >
+      <CardContent className="p-5">
+        <h3 className="font-medium">{exampleNote.title}</h3>
+        <Separator className="my-3 border-b border-primary"/>
+        <div className="max-h-36 overflow-hidden text-sm">
           {parse(exampleNote.content)}
         </div>
       </CardContent>
