@@ -1,7 +1,7 @@
 {
   "theme_color" : "#417505",
   "background_color" : "#417505",
-  "display" : "fullscreen",
+  "display" : "standalone",
   "scope" : "/",
   "start_url" : "/",
   "name" : "Simple Notes WYSIWYG",

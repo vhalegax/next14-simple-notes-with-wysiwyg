@@ -8,7 +8,7 @@ import { NotesCard } from "@/components/notes/card"
 import { NotesEditor } from "@/components/notes/editor"
 
 import { NoteType } from "@/types/NoteType"
-import { readNotesFromIndexedDB } from "@/utils/index-db"
+import { createIndexedDB, readNotesFromIndexedDB } from "@/utils/index-db"
 
 export default function Home() {
   const [openEditor, setOpenEditor] = useState(false)
@@ -23,6 +23,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        await createIndexedDB()
         const data = await readNotesFromIndexedDB()
         setNotes(data)
       } catch (e) {}

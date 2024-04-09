@@ -12,9 +12,10 @@ import { updateNoteInIndexedDB } from "@/utils/index-db"
 
 interface Props {
   note: NoteType
+  handleEditor: (value: boolean, note?: NoteType) => void
 }
 
-export function NotesCard({ note }: Props) {
+export function NotesCard({ note, handleEditor }: Props) {
   const { ref }: any = useResizeDetector({
     refreshMode: "debounce",
     refreshRate: 1000,
@@ -33,7 +34,10 @@ export function NotesCard({ note }: Props) {
         width: note.width ? `${note.width}px` : "200px",
       }}
     >
-      <CardContent className="h-full w-full overflow-hidden p-4 hover:cursor-pointer hover:bg-muted">
+      <CardContent
+        className="h-full w-full overflow-hidden p-4 hover:cursor-pointer hover:bg-muted"
+        onClick={() => handleEditor(true, note)}
+      >
         <h3 className="font-medium">{note.title}</h3>
         <Separator className="my-3 border-b border-primary" />
         <div className="text-sm dark:text-muted-foreground">

@@ -172,9 +172,6 @@ export function updateNoteInIndexedDB({
           if (width) note.width = width
           if (height) note.height = height
 
-          if (coordinate?.x) note.coordinate.x = coordinate.x
-          if (coordinate?.y) note.coordinate.y = coordinate.y
-
           const updateRequest = objectStore.put(note)
 
           updateRequest.onsuccess = function () {
@@ -215,4 +212,29 @@ export function updateNoteInIndexedDB({
       reject((event.target as IDBRequest).error)
     }
   })
+}
+
+export function createIndexedDB() {
+  // Check if IndexedDB is supported by the browser
+  if (!window.indexedDB) {
+    console.error("IndexedDB is not supported by your browser")
+    return
+  }
+
+  var request = window.indexedDB.open(DATABASE_NAME, 1)
+
+  // Handle database creation/upgrading
+  request.onupgradeneeded = function (event: any) {
+    var db = event.target.result
+
+    // Check if the "notes" object store already exists
+    if (!db.objectStoreNames.contains("notes")) {
+      db.createObjectStore("notes", { keyPath: "id" })
+    }
+  }
+
+  // Handle successful database opening or creation
+  request.onsuccess = function (event) {
+    console.log("Database opened/created successfully")
+  }
 }
