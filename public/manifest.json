@@ -1,68 +1,22 @@
 {
-  "theme_color" : "#417505",
-  "background_color" : "#417505",
-  "display" : "standalone",
-  "scope" : "/",
-  "start_url" : "/",
-  "name" : "Simple Notes WYSIWYG",
-  "short_name" : "Simple Notes",
-  "description" : "Simple Notes With WYSIWYG",
+  "theme_color": "#417505",
+  "background_color": "#417505",
+  "display": "standalone",
+  "start_url": "/",
+  "name": "Simple Notes WYSIWYG",
+  "short_name": "Simple Notes",
+  "description": "Simple Notes With WYSIWYG",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "next.svg",
-      "sizes": "48x48",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
-      "sizes": "72x72",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
-      "sizes": "96x96",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
+      "src": "icons/128.png",
       "sizes": "128x128",
-      "type": "image/svg",
-      "purpose": "maskable any"
+      "type": "image/png"
     },
     {
-      "src": "next.svg",
-      "sizes": "144x144",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
-      "sizes": "152x152",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
-      "sizes": "192x192",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
-      "sizes": "384x384",
-      "type": "image/svg",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "next.svg",
+      "src": "icons/512.png",
       "sizes": "512x512",
-      "type": "image/svg",
-      "purpose": "maskable any"
+      "type": "image/png"
     }
-  ],
-  "splash_pages": null
+  ]
 }
