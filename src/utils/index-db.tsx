@@ -11,6 +11,12 @@ interface SaveNoteProps {
 
 interface UpdateNoteProps extends SaveNoteProps {
   id: string
+  width?: number
+  height?: number
+  coordinate?: {
+    x: number
+    y: number
+  }
 }
 
 export function saveToIndexedDB({
@@ -139,6 +145,9 @@ export function updateNoteInIndexedDB({
   id,
   content,
   title,
+  width,
+  height,
+  coordinate,
 }: UpdateNoteProps): Promise<void> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DATABASE_NAME, 1)
@@ -159,6 +168,12 @@ export function updateNoteInIndexedDB({
           note.content = content
           note.title = title
           note.updatedAt = new Date().getTime()
+
+          if (width) note.width = width
+          if (height) note.height = height
+
+          if (coordinate?.x) note.coordinate.x = coordinate.x
+          if (coordinate?.y) note.coordinate.y = coordinate.y
 
           const updateRequest = objectStore.put(note)
 

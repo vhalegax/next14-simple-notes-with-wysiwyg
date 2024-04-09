@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+      <div className="flex flex-wrap gap-5">
         {notes
           .sort((noteA, noteB) => noteB.createdAt - noteA.createdAt)
           .map((note) => {
